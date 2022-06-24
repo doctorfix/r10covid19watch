@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdminLTE 3 | Top Navigation</title>
+
+<link rel="stylesheet" href="css/googlecss.css&display=fallback">
+
+<link rel="stylesheet" href="css/all.min.css">
+<link rel="stylesheet" href="css/adminlte.min.css?v=3.2.0">
+<script nonce="c8ff5043-c33f-4ecf-8c38-25fce9778dc7">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.zaraz.init=()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.x=Math.random(),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0;for(const e of[localStorage,sessionStorage])Object.keys(e||{}).filter((a=>a.startsWith("_zaraz_"))).forEach((t=>{try{a.zarazData["z_"+t.slice(7)]=JSON.parse(e.getItem(t))}catch{a.zarazData["z_"+t.slice(7)]=e.getItem(t)}}));z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)},["complete","interactive"].includes(e.readyState)?zaraz.init():a.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,0,"script");})(window,document);</script></head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+<div class="container">
+<a href="#" class="navbar-brand">
+<img src="img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+<span class="brand-text font-weight-light">COVID Tracing App</span>
+</a>
+<button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse order-3" id="navbarCollapse">
+
+<ul class="navbar-nav">
+<li class="nav-item dropdown">
+<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Menu</a>
+<ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+<li ><a href="#covidform"  class="dropdown-item">COVID Form </a></li>
+<li ><a href="#covidamin"  class="dropdown-item">Dashboard</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+</div>
+</nav>
+
+
+<div class="content-wrapper">
+
+<div class="content-header">
+<div class="container">
+<div class="row mb-2">
+<div class="col-sm-6">
+<h1 id="hdheading" class="m-0"> Do Something <small>here</small></h1>
+</div>
+<div class="col-sm-6">
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div id="main" class="row">
+
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+<footer class="main-footer">
+
+<div class="float-right d-none d-sm-inline">
+CASE Study: COVID-19 Tracing App 
+</div>
+
+<strong>Copyright &copy; 2022</strong> All rights reserved.
+</footer>
+</div>
+
+
+
+<script src="js/jquery.min.js"></script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/adminlte.min.js?v=3.2.0"></script>
+
+
+<script>
+
+  function badgify(par_val)
+  {
+    let badge = '';
+    let loc_val = par_val.toUpperCase();
+    switch(loc_val)
+    {
+      case "YES":
+        badge = "danger";
+        break;
+      case "NO":
+        badge = "success";
+        break;
+      default:
+        badge = "warning";
+        break;
+
+    }    
+     return '<span class="float-right badge bg-' + badge + '">' + loc_val + '</span>'
+  }
+
+  function cformtablerow(par_row)
+  {
+    $("#tabentries  tbody").append(
+             '<tr>' + 
+                   '<td>' + par_row.name + '</td>' + 
+                   '<td align="center">' + par_row.gender + '</td>' + 
+                   '<td align="center">' + par_row.age +'</td>' + 
+                   '<td>' + par_row.mobileno + '</td>' + 
+                   '<td>' + par_row.bodytemp +  '</td>' +  
+                   '<td align="center"> ' + badgify(par_row.diagnosed) + '</td>' + 
+                   '<td align="center">' + badgify(par_row.encounter) + '</td>' + 
+                   '<td align="center">' + badgify(par_row.vacinated) + '</td>' + 
+                   '<td>' + par_row.nationality + '</td>' + 
+                   '<td>' + par_row.btn1 + '</td>' + 
+                   '<td>' + par_row.btn2 + '</td>' + 
+                '</tr>'
+    )
+  }
+
+
+  function cformtable()
+  {
+    /*
+    name, gender, age, mobile no, body temp, covid-19 diagnosed(y/n), covid-19 encounter(y/n), 
+    vacinated(y/n), nationality
+    */
+    return '<div class="card-body">' + 
+          '<table id="tabentries" class="table table-bordered table-hover">' + 
+             '<thead>' + 
+                '<tr>' + 
+                   '<th>Name </th>' + 
+                   '<th> Gender </th>' + 
+                   '<th> Age </th>' + 
+                  '<th> Mobile No </th>' + 
+                  '<th> Body Temp </th>' +  
+                  '<th> Covid-19 diagnosed(y/n) </th>' + 
+                  '<th> Covid-19 encounter(y/n) </th>' + 
+                  '<th> Vacinated(y/n) </th>' + 
+                  '<th> Nationality </th>' + 
+                  '<th> Edit </th>' +
+                  '<th> Delete </th>' + 
+                '</tr>' + 
+              '</thead>' + 
+              '<tbody id="covidrow">' + 
+              '</tbody>' + 
+          '</table>' +
+      '</div>';
+  }
+
+  function cardify(par_val)
+  {
+    return '<div class="card card-primary card-outline">' +
+        '<div class="card-body">' +
+          '<h5 class="card-title">' + par_val.cardtitle + '</h5>' +
+          '<p class="card-text">' + par_val.cardtext + '</p>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function showencodeddata()
+  {
+    $("#main").html(
+        cardify(
+          {
+            cardtitle:"",
+            cardtext:
+               '<div class="row">' +
+                '<button class="btn btn-success" onclick="showentryform()"> NEW ENTRY </button>' +
+                '</div>' +
+              '<div class="row">' +
+               cformtable() +
+              '</div>' 
+          })
+     );
+
+     cformtablerow({    
+                        name: "Test 1",
+                        gender: "Male", 
+                        age: "33", 
+                        mobileno: "09171234567",
+                        bodytemp: "50",
+                        diagnosed: "yes",
+                        encounter: "no",
+                        vacinated: "yes",
+                        nationality: "Filipino",
+                        btn1: '<button class="btn btn-warning btn-xs" onclick="alert(\'ed\')"> Edit </button>',
+                        btn2: '<button class="btn btn-danger btn-xs" onclick="alert(\'del\')"> Delete </button>',
+                  }
+            );
+      
+            cformtablerow({    
+                        name: "Test 2",
+                        gender: "Female", 
+                        age: "32", 
+                        mobileno: "09221234567",
+                        bodytemp: "35",
+                        diagnosed: "no",
+                        encounter: "yes",
+                        vacinated: "no",
+                        nationality: "Filipino",
+                        btn1: '<button class="btn btn-warning btn-xs" onclick="alert(\'ed\')"> Edit </button>',
+                        btn2: '<button class="btn btn-danger btn-xs" onclick="alert(\'del\')"> Delete </button>',
+                  }
+            );
+  
+
+  }
+
+  function cardform(par_val)
+  {
+    /*
+     {
+      color: {primary, warning, danger},
+      title: 'Quickie',
+      bodies: [
+        val1, .., valn
+      ],
+      footerels: '<button type="submit" class="btn btn-primary">Submit</button>'
+     }
+    */
+    return  '<div class="container-fluid">' +
+        '<div class="card card-' + par_val.color + '">' +
+           '<div class="card-header">' +
+                '<h3 class="card-title">' + par_val.title + '</h3>' +
+          '</div>' +
+          '<form>' +
+              '<div class="card-body">' +
+              
+                 function ()
+                 {
+                    let bodies = '';
+                    for (i=0; i < par_val.bodies.length; i++)
+                    {
+                      bodies +=  par_val.bodies[i];
+                                
+                    }
+                    return bodies;
+                 } () +
+              '</div>' +
+              '<div class="card-footer">' +
+                par_val.footerels +
+              '</div>' +
+         '</form>' +
+      '</div>' +
+      '</div>'
+      ;
+  }
+
+  function showentryform()
+  {
+    $("#main").html( 
+          cardform(  
+          {
+            color: "info",
+            title: 'Covid-19 Entry',
+            bodies: [
+                      '<div class="form-group">' +
+                      '<label for="inputname">Email address</label>' +
+                      '<input type="text" class="form-control" id="inputname" placeholder="Full Name">' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label>Gender</label>' +
+                      '<select id="gender" class="custom-select">' +
+                      '<option>Male</option>' +
+                      '<option>Female</option>' +
+                      '</select>' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label for="inputage">Age</label>' +
+                      '<input type="text" class="form-control" id="inputage" placeholder="Age">' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label for="inputmobileno">Mobile Number</label>' +
+                      '<input type="text" class="form-control" id="inputmobileno" placeholder="Mobile Number">' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label>Covid-19 Diagnosed</label>' +
+                      '<select id="diagnosed" class="custom-select">' +
+                      '<option>Yes</option>' +
+                      '<option>No</option>' +
+                      '</select>' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label>Covid-19 encounter</label>' +
+                      '<select id="encounter" class="custom-select">' +
+                      '<option>Yes</option>' +
+                      '<option>No</option>' +
+                      '</select>' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label>Vacinated</label>' +
+                      '<select id="vacinated" class="custom-select">' +
+                      '<option>Yes</option>' +
+                      '<option>No</option>' +
+                      '</select>' +
+                      '</div>',
+                      '<div class="form-group">' +
+                      '<label for="inputnationality">Nationality</label>' +
+                      '<input type="text" class="form-control" id="inputnationality" placeholder="Mobile Number" value="Filipino">' +
+                      '</div>',
+
+              
+            ],
+            footerels: '<button type="submit" onclick="showencodeddata()" class="btn btn-primary">Submit</button>'
+          }
+       ) 
+
+
+      
+    );
+  }
+
+
+   $('a[href="#covidform"]').click(function(){
+      $("#hdheading").html("COVID Monitoring <small> entry </small>");
+      showencodeddata() 
+  }); 
+
+
+  $('a[href="#covidamin"]').click(function(){
+    $("#main").html("Covid Dashboard")
+  });
+</script>
+
+</body>
+</html>

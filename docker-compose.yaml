@@ -1,0 +1,14 @@
+version: "2"
+services:
+  phpwebapp:
+    container_name: r10webdev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    image: phpwebdev:1.0
+    volumes:
+      - '/mnt/c/Users/rufon/Documents/TAGABUKIDPROJECT/covidwatch:/var/www/html'
+    ports:
+      - 5000:80
+
